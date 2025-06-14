@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40962c40-de9b-426f-acec-8aeaf7378420">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     arsip_dokumen.`id_arsip` AS arsip_dokumen_id_arsip,
+     arsip_dokumen.`nama_dokumen` AS arsip_dokumen_nama_dokumen,
+     arsip_dokumen.`id_perkara` AS arsip_dokumen_id_perkara,
+     arsip_dokumen.`id_penggugat` AS arsip_dokumen_id_penggugat,
+     arsip_dokumen.`id_hakim` AS arsip_dokumen_id_hakim,
+     arsip_dokumen.`file_dokumen` AS arsip_dokumen_file_dokumen,
+     arsip_dokumen.`tanggal_arsip` AS arsip_dokumen_tanggal_arsip,
+     arsip_dokumen.`keterangan` AS arsip_dokumen_keterangan,
+     hakim.`id_hakim` AS hakim_id_hakim,
+     hakim.`nama_hakim` AS hakim_nama_hakim,
+     hakim.`nip` AS hakim_nip,
+     hakim.`jabatan` AS hakim_jabatan,
+     hakim.`tgl_mulai_tugas` AS hakim_tgl_mulai_tugas,
+     pendaftaran_perkara.`id_perkara` AS pendaftaran_perkara_id_perkara,
+     pendaftaran_perkara.`jenis_perkara` AS pendaftaran_perkara_jenis_perkara,
+     pendaftaran_perkara.`id_penggugat` AS pendaftaran_perkara_id_penggugat,
+     pendaftaran_perkara.`id_tergugat` AS pendaftaran_perkara_id_tergugat,
+     pendaftaran_perkara.`tanggal` AS pendaftaran_perkara_tanggal,
+     pendaftaran_perkara.`status_perkara` AS pendaftaran_perkara_status_perkara,
+     pendaftaran_perkara.`biaya` AS pendaftaran_perkara_biaya,
+     pendaftaran_perkara.`status_pembayaran` AS pendaftaran_perkara_status_pembayaran,
+     jenis_perkara.`id_pk` AS jenis_perkara_id_pk,
+     jenis_perkara.`id_perkara` AS jenis_perkara_id_perkara,
+     jenis_perkara.`jenis_perkara` AS jenis_perkara_jenis_perkara,
+     jenis_perkara.`tanggal` AS jenis_perkara_tanggal,
+     jenis_perkara.`keterangan` AS jenis_perkara_keterangan,
+     jenis_perkara.`biaya` AS jenis_perkara_biaya,
+     penggugat.`id_pg` AS penggugat_id_pg,
+     penggugat.`id_penggugat` AS penggugat_id_penggugat,
+     penggugat.`nik` AS penggugat_nik,
+     penggugat.`nama` AS penggugat_nama,
+     penggugat.`jenis_kelamin` AS penggugat_jenis_kelamin,
+     penggugat.`tempat_tanggal_lahir` AS penggugat_tempat_tanggal_lahir,
+     penggugat.`alamat` AS penggugat_alamat,
+     penggugat.`kewarganegaraan` AS penggugat_kewarganegaraan,
+     penggugat.`agama` AS penggugat_agama,
+     penggugat.`pekerjaan` AS penggugat_pekerjaan,
+     penggugat.`pendidikan_terakhir` AS penggugat_pendidikan_terakhir,
+     penggugat.`no_hp` AS penggugat_no_hp,
+     penggugat.`email` AS penggugat_email,
+     penggugat.`status_perkawinan` AS penggugat_status_perkawinan,
+     tergugat.`id_tg` AS tergugat_id_tg,
+     tergugat.`id_tergugat` AS tergugat_id_tergugat,
+     tergugat.`nik` AS tergugat_nik,
+     tergugat.`nama` AS tergugat_nama,
+     tergugat.`jenis_kelamin` AS tergugat_jenis_kelamin,
+     tergugat.`tempat_tanggal_lahir` AS tergugat_tempat_tanggal_lahir,
+     tergugat.`alamat` AS tergugat_alamat,
+     tergugat.`kewarganegaraan` AS tergugat_kewarganegaraan,
+     tergugat.`agama` AS tergugat_agama,
+     tergugat.`pekerjaan` AS tergugat_pekerjaan,
+     tergugat.`pendidikan_terakhir` AS tergugat_pendidikan_terakhir,
+     tergugat.`no_hp` AS tergugat_no_hp,
+     tergugat.`email` AS tergugat_email,
+     tergugat.`status_perkawinan` AS tergugat_status_perkawinan
+FROM
+     `arsip_dokumen` arsip_dokumen,
+     `hakim` hakim,
+     `pendaftaran_perkara` pendaftaran_perkara,
+     `jenis_perkara` jenis_perkara,
+     `penggugat` penggugat,
+     `tergugat` tergugat]]>
+	</queryString>
+	<field name="arsip_dokumen_id_arsip" class="java.lang.Integer"/>
+	<field name="arsip_dokumen_nama_dokumen" class="java.lang.String"/>
+	<field name="arsip_dokumen_id_perkara" class="java.lang.Integer"/>
+	<field name="arsip_dokumen_id_penggugat" class="java.lang.Integer"/>
+	<field name="arsip_dokumen_id_hakim" class="java.lang.Integer"/>
+	<field name="arsip_dokumen_file_dokumen" class="java.lang.String"/>
+	<field name="arsip_dokumen_tanggal_arsip" class="java.sql.Date"/>
+	<field name="arsip_dokumen_keterangan" class="java.lang.String"/>
+	<field name="hakim_id_hakim" class="java.lang.Integer"/>
+	<field name="hakim_nama_hakim" class="java.lang.String"/>
+	<field name="hakim_nip" class="java.lang.String"/>
+	<field name="hakim_jabatan" class="java.lang.String"/>
+	<field name="hakim_tgl_mulai_tugas" class="java.sql.Date"/>
+	<field name="pendaftaran_perkara_id_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_jenis_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_id_penggugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_id_tergugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_tanggal" class="java.sql.Date"/>
+	<field name="pendaftaran_perkara_status_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_biaya" class="java.lang.Integer"/>
+	<field name="pendaftaran_perkara_status_pembayaran" class="java.lang.String"/>
+	<field name="jenis_perkara_id_pk" class="java.lang.Integer"/>
+	<field name="jenis_perkara_id_perkara" class="java.lang.String"/>
+	<field name="jenis_perkara_jenis_perkara" class="java.lang.String"/>
+	<field name="jenis_perkara_tanggal" class="java.sql.Date"/>
+	<field name="jenis_perkara_keterangan" class="java.lang.String"/>
+	<field name="jenis_perkara_biaya" class="java.lang.Integer"/>
+	<field name="penggugat_id_pg" class="java.lang.Integer"/>
+	<field name="penggugat_id_penggugat" class="java.lang.String"/>
+	<field name="penggugat_nik" class="java.lang.String"/>
+	<field name="penggugat_nama" class="java.lang.String"/>
+	<field name="penggugat_jenis_kelamin" class="java.lang.String"/>
+	<field name="penggugat_tempat_tanggal_lahir" class="java.lang.String"/>
+	<field name="penggugat_alamat" class="java.lang.String"/>
+	<field name="penggugat_kewarganegaraan" class="java.lang.String"/>
+	<field name="penggugat_agama" class="java.lang.String"/>
+	<field name="penggugat_pekerjaan" class="java.lang.String"/>
+	<field name="penggugat_pendidikan_terakhir" class="java.lang.String"/>
+	<field name="penggugat_no_hp" class="java.lang.String"/>
+	<field name="penggugat_email" class="java.lang.String"/>
+	<field name="penggugat_status_perkawinan" class="java.lang.String"/>
+	<field name="tergugat_id_tg" class="java.lang.Integer"/>
+	<field name="tergugat_id_tergugat" class="java.lang.String"/>
+	<field name="tergugat_nik" class="java.lang.String"/>
+	<field name="tergugat_nama" class="java.lang.String"/>
+	<field name="tergugat_jenis_kelamin" class="java.lang.String"/>
+	<field name="tergugat_tempat_tanggal_lahir" class="java.lang.String"/>
+	<field name="tergugat_alamat" class="java.lang.String"/>
+	<field name="tergugat_kewarganegaraan" class="java.lang.String"/>
+	<field name="tergugat_agama" class="java.lang.String"/>
+	<field name="tergugat_pekerjaan" class="java.lang.String"/>
+	<field name="tergugat_pendidikan_terakhir" class="java.lang.String"/>
+	<field name="tergugat_no_hp" class="java.lang.String"/>
+	<field name="tergugat_email" class="java.lang.String"/>
+	<field name="tergugat_status_perkawinan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="164" splitType="Stretch"/>
+	</summary>
+</jasperReport>
