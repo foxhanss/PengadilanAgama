@@ -45,6 +45,7 @@ public class login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 51));
 
+        login.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         login.setText("LOGIN");
         login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -54,6 +55,7 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        cancel.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         cancel.setText("CANCEL");
         cancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         cancel.addActionListener(new java.awt.event.ActionListener() {
