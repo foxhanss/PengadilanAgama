@@ -7,27 +7,38 @@ package Menu;
 
 import FormMaster.jenis_perkara;
 import FormMaster.DataPenggugat;
-import FormMaster.DataTergugat;
 import FormMaster.hakim;
 import FormMaster.ArsipDokumen;
 import FormTransaksi.PendaftaranPerkara;
+import FormTransaksi.KeputusandanPutusan;
+import FormTransaksi.SidangPerkara;
+import FormTransaksi.PengarsipanDokumen;
+import Laporan.akta_nikah;
+import Laporan.jadwal_laporan_sidang;
+import Laporan.laporan_biaya_perkara;
+import Laporan.putusan_hakim;
+import Laporan.surat_gugatan;
 import java.awt.Component;
+
 
 /**
  *
  * @author T480
  */
 public class MenuUtama extends javax.swing.JFrame {
+    public static javax.swing.JDesktopPane desktopPane;
+    
 
     /**
      * Creates new form MenuUtama
      */
     public MenuUtama() {
         initComponents();
+        MenuUtama.desktopPane = dekstopPane;
+
+
+        
     }
-
-    private javax.swing.JDesktopPane desktopPane;
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +53,6 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -67,7 +77,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         dekstopPaneLayout.setVerticalGroup(
             dekstopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGap(0, 1023, Short.MAX_VALUE)
         );
 
         jMenu3.setText("Master");
@@ -90,21 +100,13 @@ public class MenuUtama extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem1);
 
-        jMenuItem2.setText("Data Penggugat");
+        jMenuItem2.setText("Data Penggugat & Data Tergugat");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem2);
-
-        jMenuItem3.setText("Data Tergugat");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("Hakim & Panitera");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -144,9 +146,19 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu4.add(jMenuItem7);
 
         jMenuItem8.setText("Keputusan & Putusan");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenuItem9.setText("Pengarsipan Dokumen");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);
@@ -155,9 +167,19 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
         jMenuItem10.setText("Akta Nikah");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem10);
 
         jMenuItem11.setText("Surat Gugatan");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem11);
 
         jMenuItem12.setText("Putusan Hakim");
@@ -169,6 +191,11 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu5.add(jMenuItem12);
 
         jMenuItem13.setText("Jadwal Laporan Sidang");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem13);
 
         jMenuItem14.setText("Laporan Biaya Perkara");
@@ -193,9 +220,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(dekstopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(dekstopPane)
         );
 
         pack();
@@ -222,23 +247,27 @@ public class MenuUtama extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        DataTergugat dt = new DataTergugat();
-        Component add; // BENAR
-        add = dekstopPane.add(dt);
-        dt.setVisible(true);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+        SidangPerkara sp = new SidangPerkara();
+        Component add; // BENAR
+        add = dekstopPane.add(sp);
+        sp.setVisible(true);
+// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
+        putusan_hakim ph = new putusan_hakim();
+        Component add; // BENAR
+        add = dekstopPane.add(ph);
+        ph.setVisible(true);
+// TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        laporan_biaya_perkara lbp = new laporan_biaya_perkara();
+        Component add; // BENAR
+        add = dekstopPane.add(lbp);
+        lbp.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -265,6 +294,46 @@ public class MenuUtama extends javax.swing.JFrame {
         pp.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        KeputusandanPutusan kdp = new KeputusandanPutusan();
+        Component add; // BENAR
+        add = dekstopPane.add(kdp);
+        kdp.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        PengarsipanDokumen pd = new PengarsipanDokumen();
+        Component add; // BENAR
+        add = dekstopPane.add(pd);
+        pd.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        akta_nikah an = new akta_nikah();
+        Component add; // BENAR
+        add = dekstopPane.add(an);
+        an.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        surat_gugatan sg = new surat_gugatan();
+        Component add; // BENAR
+        add = dekstopPane.add(sg);
+        sg.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        jadwal_laporan_sidang jls = new jadwal_laporan_sidang();
+        Component add; // BENAR
+        add = dekstopPane.add(jls);
+        jls.setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,7 +383,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

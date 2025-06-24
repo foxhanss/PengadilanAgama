@@ -93,6 +93,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         jLabel1.setText("KEPUTUSAN & PUTUSAN");
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/save.png"))); // NOI18N
         btnSave.setText("SAVE");
         btnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +103,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         });
 
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/clear.png"))); // NOI18N
         btnClear.setText("CLEAR");
         btnClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +132,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         cari.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         btnCari.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/search.png"))); // NOI18N
         btnCari.setText("Cari");
         btnCari.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCari.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +142,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         });
 
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/edit.png"))); // NOI18N
         btnEdit.setText("EDIT");
         btnEdit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +152,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         });
 
         btnDelete.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/delete.png"))); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +235,8 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
         salinan_putusan.setEditable(false);
         salinan_putusan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
-        salinan.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        salinan.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        salinan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/folder-1485.png"))); // NOI18N
         salinan.setText("Browse...");
         salinan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +319,7 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
                 .addGap(342, 342, 342)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
@@ -325,8 +331,8 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(71, 71, 71)
+                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(65, 65, 65)
                             .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,8 +364,8 @@ public class KeputusandanPutusan extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCari))))
-                .addContainerGap(196, Short.MAX_VALUE))
+                            .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);

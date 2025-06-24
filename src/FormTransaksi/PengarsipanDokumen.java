@@ -3,19 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FormMaster;
+package FormTransaksi;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import koneksi.koneksi;
 
 /**
  *
  * @author user
  */
-public class PengarsipanDokumen extends javax.swing.JFrame {
-
+public class PengarsipanDokumen extends javax.swing.JInternalFrame {
+    Connection conn = null;
+    File fileTerpilih;
     /**
      * Creates new form PengarsipanDokumen
      */
     public PengarsipanDokumen() {
         initComponents();
+        isiComboJenisPerkara();
+        tampilDataTabel();
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
     }
 
     /**
@@ -27,240 +52,668 @@ public class PengarsipanDokumen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        button1 = new java.awt.Button();
-        button2 = new java.awt.Button();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        tabel_pengarsipan = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        button3 = new java.awt.Button();
-        button4 = new java.awt.Button();
-        button5 = new java.awt.Button();
+        cari = new javax.swing.JTextField();
+        btnCari = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jenis_dokumen = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        tanggal_upload = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        upload = new javax.swing.JTextField();
+        file = new javax.swing.JButton();
+        jenis_perkara = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        id_perkara = new javax.swing.JTextField();
+        btnSave = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("Pengarsipan Dokumen");
+        jPanel1.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(969, 1019));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel2.setText("Nomor Perkara:");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 40)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel1.setText("PENGARSIPAN DOKUMEN");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel3.setText("Jenis Dokumen:");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 153, 0));
+        jLabel6.setText(" TABEL PENGARSIPAN DOKUMEN");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel4.setText("Tanggal Upload:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel5.setText("Upload File:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Surat Dakwaan", "Surat Putusan", "Surat Kuasa Hukum", "Putusan Pengadilan", "Dokumen Tambahan" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Browse...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        button1.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        button1.setLabel("SIMPAN");
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-
-        button2.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
-        button2.setLabel("CLEAR");
-        button2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setText("ARSIP DOKUMEN");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabel_pengarsipan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "No", "No. Perkara", "Jenis", "Tanggal Upload", "File"
+                "ID Pengarsipan", "ID Perkara", "Jenis Perkara", "Jenis Dokumen", "Tanggal Upload", "File"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabel_pengarsipan);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 153, 0));
         jLabel7.setText("KATA KUNCI PENCARIAN");
 
-        button3.setLabel("CARI");
-
-        button4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        button4.setLabel("EDIT");
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        btnCari.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/search.png"))); // NOI18N
+        btnCari.setText("Cari");
+        btnCari.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4ActionPerformed(evt);
+                btnCariActionPerformed(evt);
             }
         });
 
-        button5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        button5.setLabel("DELETE");
+        btnEdit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/edit.png"))); // NOI18N
+        btnEdit.setText("EDIT");
+        btnEdit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/delete.png"))); // NOI18N
+        btnDelete.setText("DELETE");
+        btnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
+        jPanel3.setBackground(new java.awt.Color(0, 153, 0));
+
+        jPanel2.setBackground(new java.awt.Color(255, 153, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(320, 60));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Pengarsipan Dokumen");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addContainerGap())
+        );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Jenis Perkara");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Jenis Dokumen:");
+
+        jenis_dokumen.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jenis_dokumen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Surat Dakwaan", "Surat Putusan", "Surat Kuasa Hukum", "Putusan Pengadilan", "Dokumen Tambahan" }));
+        jenis_dokumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenis_dokumenActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Tanggal Upload:");
+
+        tanggal_upload.setBackground(new java.awt.Color(0, 153, 0));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Upload File:");
+
+        upload.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        upload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadActionPerformed(evt);
+            }
+        });
+
+        file.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        file.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/folder-1485.png"))); // NOI18N
+        file.setText("Browse...");
+        file.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileActionPerformed(evt);
+            }
+        });
+
+        jenis_perkara.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jenis_perkara.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jenis_perkaraActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("--");
+
+        id_perkara.setEditable(false);
+        id_perkara.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2))
+                .addGap(74, 74, 74)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jenis_perkara, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(id_perkara))
+                    .addComponent(jenis_dokumen, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tanggal_upload, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(upload, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(file)))
+                .addContainerGap(313, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jenis_perkara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(id_perkara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jenis_dokumen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(tanggal_upload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(upload, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(file))
+                .addGap(0, 50, Short.MAX_VALUE))
+        );
+
+        btnSave.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/save.png"))); // NOI18N
+        btnSave.setText("SAVE");
+        btnSave.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnClear.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/image/clear.png"))); // NOI18N
+        btnClear.setText("CLEAR");
+        btnClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(117, 117, 117)
+                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(352, 352, 352)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(336, Short.MAX_VALUE))
+        );
+
+        jScrollPane2.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(77, 77, 77)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5))
-                                .addGap(74, 74, 74)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(48, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 969, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void pilihFilePengarsipan() {
+    JFileChooser fileChooser = new JFileChooser();
+    int hasil = fileChooser.showOpenDialog(this);
+    if (hasil == JFileChooser.APPROVE_OPTION) {
+        fileTerpilih = fileChooser.getSelectedFile();
+        upload.setText(fileTerpilih.getAbsolutePath()); // tampilkan path di JTextField
+    } else {
+        JOptionPane.showMessageDialog(null, "Tidak ada file yang dipilih.");
+    }
+    }
+    
+    private void tampilkanIDPerkaraBerdasarkanJenis() {
+    try {
+        String jenis = (String) jenis_perkara.getSelectedItem();
+        String sql = "SELECT id_perkara FROM jenis_perkara WHERE jenis_perkara = ?";
+        Connection conn = koneksi.getConnection();
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1, jenis);
+        ResultSet rs = pst.executeQuery();
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        if (rs.next()) {
+            id_perkara.setText(rs.getString("id_perkara"));
+        } else {
+            id_perkara.setText("");
+        }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Gagal menampilkan ID Perkara: " + e.getMessage());
+    }
+}
+    
+    private void isiComboJenisPerkara() {
+    try {
+        String sql = "SELECT jenis_perkara FROM jenis_perkara";
+        Connection conn = koneksi.getConnection();
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        jenis_perkara.removeAllItems();
+        while (rs.next()) {
+            jenis_perkara.addItem(rs.getString("jenis_perkara"));
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Gagal Load Jenis Perkara: " + e.getMessage());
+    }
+    }
+    
+    public void tampilDataTabel() {
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("ID Pengarsipan");
+    model.addColumn("ID Perkara");
+    model.addColumn("Jenis Perkara");
+    model.addColumn("Jenis Dokumen");
+    model.addColumn("Tanggal Upload");
+    model.addColumn("Nama File");
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    try {
+        String sql = "SELECT * FROM pengarsipan_dokumen";
+        Connection conn = koneksi.getConnection(); // Pastikan sesuai class koneksi kamu
+        Statement st = conn.createStatement();
+        ResultSet rs = st.executeQuery(sql);
 
-    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button2ActionPerformed
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getString("id_pengarsipan"),
+                rs.getString("id_perkara"),
+                rs.getString("jenis_perkara"),
+                rs.getString("jenis_dokumen"),
+                rs.getString("tanggal_upload"),
+                rs.getString("nama_file")
+            });
+        }
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_button1ActionPerformed
+        tabel_pengarsipan.setModel(model);
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Gagal Menampilkan Data: " + e.getMessage());
+    }
+}
 
-    private void button4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button4ActionPerformed
+    private void clearForm() {
+    jenis_perkara.setSelectedIndex(0);
+    id_perkara.setText("");
+    jenis_dokumen.setSelectedIndex(0);
+    tanggal_upload.setDate(null);
+    upload.setText("");
+    fileTerpilih = null;
+}
+
+    
+    private void jenis_dokumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_dokumenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_button4ActionPerformed
+    }//GEN-LAST:event_jenis_dokumenActionPerformed
+
+    private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uploadActionPerformed
+
+    private void fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileActionPerformed
+        pilihFilePengarsipan();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fileActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+    if (fileTerpilih == null) {
+        JOptionPane.showMessageDialog(null, "Silakan pilih file terlebih dahulu.");
+        return;
+    }
+
+    try {
+        Connection conn = koneksi.getConnection();
+        String sql = "INSERT INTO pengarsipan_dokumen (id_perkara, jenis_perkara, jenis_dokumen, tanggal_upload, file_upload, nama_file) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        // Ambil data dari komponen input
+        String idPerkara = id_perkara.getText(); // Non-editable
+        String jenisPerkara = (String) jenis_perkara.getSelectedItem();
+        String jenisDokumen = (String) jenis_dokumen.getSelectedItem();
+
+        // Format tanggal upload
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggal = sdf.format(tanggal_upload.getDate());
+
+        pst.setString(1, idPerkara);
+        pst.setString(2, jenisPerkara);
+        pst.setString(3, jenisDokumen);
+        pst.setString(4, tanggal);
+
+        // Upload file opsional
+        File file = new File(upload.getText()); // JTextField yang menampilkan path file
+        if (!upload.getText().isEmpty() && file.exists()) {
+            FileInputStream fis = new FileInputStream(file);
+            pst.setBinaryStream(5, fis, (int) file.length()); // BLOB
+            pst.setString(6, file.getName());
+
+            // Simpan juga ke folder lokal
+            File folderTujuan = new File("folder_pengarsipan");
+            if (!folderTujuan.exists()) folderTujuan.mkdirs();
+            Files.copy(file.toPath(), new File(folderTujuan, file.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } else {
+            pst.setNull(5, java.sql.Types.BLOB);
+            pst.setNull(6, java.sql.Types.VARCHAR);
+        }
+
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(this, "Data berhasil disimpan.");
+        clearForm();
+        tampilDataTabel();
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Gagal menyimpan data: " + e.getMessage());
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Gagal menyimpan file lokal: " + ex.getMessage());
+    }
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearForm();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+    String keyword = cari.getText(); // cari = JTextField pencarian
+    DefaultTableModel model = new DefaultTableModel();
+
+    // Kolom sesuai dengan form Pengarsipan Dokumen
+    model.addColumn("ID Pengarsipan");
+    model.addColumn("ID Perkara");
+    model.addColumn("Jenis Perkara");
+    model.addColumn("Jenis Dokumen");
+    model.addColumn("Tanggal Upload");
+    model.addColumn("Nama File");
+
+    try {
+        String sql = "SELECT * FROM pengarsipan_dokumen WHERE "
+                   + "id_perkara LIKE ? OR "
+                   + "jenis_perkara LIKE ? OR "
+                   + "jenis_dokumen LIKE ? OR "
+                   + "tanggal_upload LIKE ? OR "
+                   + "nama_file LIKE ?";
+        Connection conn = koneksi.getConnection();
+        PreparedStatement pst = conn.prepareStatement(sql);
+
+        for (int i = 1; i <= 5; i++) {
+            pst.setString(i, "%" + keyword + "%");
+        }
+
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getString("id_pengarsipan"),
+                rs.getString("id_perkara"),
+                rs.getString("jenis_perkara"),
+                rs.getString("jenis_dokumen"),
+                rs.getString("tanggal_upload"),
+                rs.getString("nama_file")
+            });
+        }
+
+        tabel_pengarsipan.setModel(model); // tabel_pengarsipan = JTable di form
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Pencarian gagal: " + e.getMessage());
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    int selectedRow = tabel_pengarsipan.getSelectedRow();
+    if (selectedRow != -1) {
+        // Ambil ID Pengarsipan dari kolom pertama (pastikan index 0 = id_pengarsipan)
+        String id_pengarsipan = tabel_pengarsipan.getValueAt(selectedRow, 0).toString();
+
+        List<String> fields = new ArrayList<>();
+        List<Object> values = new ArrayList<>();
+
+        // Ambil jenis perkara & ID perkara (otomatis)
+        if (jenis_perkara.getSelectedItem() != null) {
+            String jenis = jenis_perkara.getSelectedItem().toString();
+            fields.add("jenis_perkara=?");
+            values.add(jenis);
+
+            try {
+                String sqlCari = "SELECT id_perkara FROM jenis_perkara WHERE jenis_perkara=?";
+                PreparedStatement pstCari = koneksi.getConnection().prepareStatement(sqlCari);
+                pstCari.setString(1, jenis);
+                ResultSet rs = pstCari.executeQuery();
+                if (rs.next()) {
+                    fields.add("id_perkara=?");
+                    values.add(rs.getString("id_perkara"));
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Gagal mengambil ID Perkara: " + ex.getMessage());
+            }
+        }
+
+        // Jenis Dokumen
+        if (jenis_dokumen.getSelectedItem() != null) {
+            fields.add("jenis_dokumen=?");
+            values.add(jenis_dokumen.getSelectedItem().toString());
+        }
+
+        // Tanggal Upload
+        if (tanggal_upload.getDate() != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            fields.add("tanggal_upload=?");
+            values.add(sdf.format(tanggal_upload.getDate()));
+        }
+
+        // File upload (opsional)
+        File file = new File(upload.getText());
+        if (!upload.getText().isEmpty() && file.exists()) {
+            try {
+                FileInputStream fis = new FileInputStream(file);
+                fields.add("file_upload=?");
+                values.add(fis);
+
+                fields.add("nama_file=?");
+                values.add(file.getName());
+
+                // Simpan ke folder lokal juga
+                File folder = new File("folder_pengarsipan");
+                if (!folder.exists()) folder.mkdirs();
+                Files.copy(file.toPath(), new File(folder, file.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan file ke lokal: " + e.getMessage());
+                return;
+            }
+        }
+
+        if (fields.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang diubah.");
+            return;
+        }
+
+        try {
+            String sql = "UPDATE pengarsipan_dokumen SET " + String.join(", ", fields) + " WHERE id_pengarsipan=?";
+            Connection conn = koneksi.getConnection();
+            PreparedStatement pst = conn.prepareStatement(sql);
+
+            int i = 0;
+            for (; i < values.size(); i++) {
+                Object val = values.get(i);
+                if (val instanceof FileInputStream) {
+                    pst.setBinaryStream(i + 1, (FileInputStream) val, (int) file.length());
+                } else {
+                    pst.setObject(i + 1, val);
+                }
+            }
+
+            pst.setString(i + 1, id_pengarsipan); // ID untuk WHERE
+            int hasil = pst.executeUpdate();
+
+            if (hasil > 0) {
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui.");
+                tampilDataTabel();
+                clearForm();
+            } else {
+                JOptionPane.showMessageDialog(this, "Data gagal diperbarui. Periksa ID Pengarsipan.");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Gagal update data: " + e.getMessage());
+        }
+
+    } else {
+        JOptionPane.showMessageDialog(this, "Pilih baris data yang ingin diedit.");
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    int selectedRow = tabel_pengarsipan.getSelectedRow();
+    if (selectedRow != -1) {
+        int confirm = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            String id = tabel_pengarsipan.getValueAt(selectedRow, 0).toString(); // Kolom ke-0 = id_pengarsipan
+            try {
+                Connection conn = koneksi.getConnection();
+                String sql = "DELETE FROM pengarsipan_dokumen WHERE id_pengarsipan=?";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, id);
+                pst.executeUpdate();
+
+                JOptionPane.showMessageDialog(this, "Data berhasil dihapus.");
+                tampilDataTabel();
+                clearForm();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(this, "Gagal menghapus data: " + e.getMessage());
+            }
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "Pilih baris data yang ingin dihapus.");
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jenis_perkaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_perkaraActionPerformed
+        tampilkanIDPerkaraBerdasarkanJenis();
+// TODO add your handling code here:
+    }//GEN-LAST:event_jenis_perkaraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -298,14 +751,14 @@ public class PengarsipanDokumen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button button1;
-    private java.awt.Button button2;
-    private java.awt.Button button3;
-    private java.awt.Button button4;
-    private java.awt.Button button5;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JTextField cari;
+    private javax.swing.JButton file;
+    private javax.swing.JTextField id_perkara;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,10 +766,17 @@ public class PengarsipanDokumen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> jenis_dokumen;
+    private javax.swing.JComboBox<String> jenis_perkara;
+    private javax.swing.JTable tabel_pengarsipan;
+    private com.toedter.calendar.JDateChooser tanggal_upload;
+    private javax.swing.JTextField upload;
     // End of variables declaration//GEN-END:variables
 }

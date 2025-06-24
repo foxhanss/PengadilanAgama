@@ -1,139 +1,329 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40962c40-de9b-426f-acec-8aeaf7378420">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f65e731-2809-49a4-a90c-1c3bad0ccc5f">
+	<property name="ireport.zoom" value="1.610510000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT
-     arsip_dokumen.`id_arsip` AS arsip_dokumen_id_arsip,
-     arsip_dokumen.`nama_dokumen` AS arsip_dokumen_nama_dokumen,
-     arsip_dokumen.`id_perkara` AS arsip_dokumen_id_perkara,
-     arsip_dokumen.`id_penggugat` AS arsip_dokumen_id_penggugat,
-     arsip_dokumen.`id_hakim` AS arsip_dokumen_id_hakim,
-     arsip_dokumen.`file_dokumen` AS arsip_dokumen_file_dokumen,
-     arsip_dokumen.`tanggal_arsip` AS arsip_dokumen_tanggal_arsip,
-     arsip_dokumen.`keterangan` AS arsip_dokumen_keterangan,
-     hakim.`id_hakim` AS hakim_id_hakim,
-     hakim.`nama_hakim` AS hakim_nama_hakim,
-     hakim.`nip` AS hakim_nip,
-     hakim.`jabatan` AS hakim_jabatan,
-     hakim.`tgl_mulai_tugas` AS hakim_tgl_mulai_tugas,
+	<style name="Heading" fontSize="14"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#006400">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#006400">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#7CFC00">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#DFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#7CFC00">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#DFFFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="c19fb6e1-e46b-4a59-a130-36b21b15c98e">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     pendaftaran_perkara.`id_pendaftaran` AS pendaftaran_perkara_id_pendaftaran,
      pendaftaran_perkara.`id_perkara` AS pendaftaran_perkara_id_perkara,
      pendaftaran_perkara.`jenis_perkara` AS pendaftaran_perkara_jenis_perkara,
      pendaftaran_perkara.`id_penggugat` AS pendaftaran_perkara_id_penggugat,
+     pendaftaran_perkara.`nama_penggugat` AS pendaftaran_perkara_nama_penggugat,
      pendaftaran_perkara.`id_tergugat` AS pendaftaran_perkara_id_tergugat,
+     pendaftaran_perkara.`nama_tergugat` AS pendaftaran_perkara_nama_tergugat,
      pendaftaran_perkara.`tanggal` AS pendaftaran_perkara_tanggal,
      pendaftaran_perkara.`status_perkara` AS pendaftaran_perkara_status_perkara,
      pendaftaran_perkara.`biaya` AS pendaftaran_perkara_biaya,
      pendaftaran_perkara.`status_pembayaran` AS pendaftaran_perkara_status_pembayaran,
+     putusan.`id_putusan` AS putusan_id_putusan,
+     putusan.`id_perkara` AS putusan_id_perkara,
+     putusan.`jenis_perkara` AS putusan_jenis_perkara,
+     putusan.`tanggal_putusan` AS putusan_tanggal_putusan,
+     putusan.`jenis_putusan` AS putusan_jenis_putusan,
+     putusan.`ringkasan` AS putusan_ringkasan,
+     putusan.`salinan_file` AS putusan_salinan_file,
+     putusan.`nama_file` AS putusan_nama_file
+FROM
+     `pendaftaran_perkara` pendaftaran_perkara,
+     `putusan` putusan]]>
+		</queryString>
+		<field name="pendaftaran_perkara_id_pendaftaran" class="java.lang.Integer"/>
+		<field name="pendaftaran_perkara_id_perkara" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_jenis_perkara" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_id_penggugat" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_nama_penggugat" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_id_tergugat" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_nama_tergugat" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_tanggal" class="java.sql.Date"/>
+		<field name="pendaftaran_perkara_status_perkara" class="java.lang.String"/>
+		<field name="pendaftaran_perkara_biaya" class="java.lang.Integer"/>
+		<field name="pendaftaran_perkara_status_pembayaran" class="java.lang.String"/>
+		<field name="putusan_id_putusan" class="java.lang.Integer"/>
+		<field name="putusan_id_perkara" class="java.lang.String"/>
+		<field name="putusan_jenis_perkara" class="java.lang.String"/>
+		<field name="putusan_tanggal_putusan" class="java.sql.Date"/>
+		<field name="putusan_jenis_putusan" class="java.lang.String"/>
+		<field name="putusan_ringkasan" class="java.lang.String"/>
+		<field name="putusan_salinan_file" class="java.lang.Object"/>
+		<field name="putusan_nama_file" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Table Dataset 1" uuid="d7337dfe-d5d3-433d-89b5-7982547f7d78"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
      jenis_perkara.`id_pk` AS jenis_perkara_id_pk,
      jenis_perkara.`id_perkara` AS jenis_perkara_id_perkara,
      jenis_perkara.`jenis_perkara` AS jenis_perkara_jenis_perkara,
      jenis_perkara.`tanggal` AS jenis_perkara_tanggal,
      jenis_perkara.`keterangan` AS jenis_perkara_keterangan,
      jenis_perkara.`biaya` AS jenis_perkara_biaya,
-     penggugat.`id_pg` AS penggugat_id_pg,
-     penggugat.`id_penggugat` AS penggugat_id_penggugat,
-     penggugat.`nik` AS penggugat_nik,
-     penggugat.`nama` AS penggugat_nama,
-     penggugat.`jenis_kelamin` AS penggugat_jenis_kelamin,
-     penggugat.`tempat_tanggal_lahir` AS penggugat_tempat_tanggal_lahir,
-     penggugat.`alamat` AS penggugat_alamat,
-     penggugat.`kewarganegaraan` AS penggugat_kewarganegaraan,
-     penggugat.`agama` AS penggugat_agama,
-     penggugat.`pekerjaan` AS penggugat_pekerjaan,
-     penggugat.`pendidikan_terakhir` AS penggugat_pendidikan_terakhir,
-     penggugat.`no_hp` AS penggugat_no_hp,
-     penggugat.`email` AS penggugat_email,
-     penggugat.`status_perkawinan` AS penggugat_status_perkawinan,
-     tergugat.`id_tg` AS tergugat_id_tg,
-     tergugat.`id_tergugat` AS tergugat_id_tergugat,
-     tergugat.`nik` AS tergugat_nik,
-     tergugat.`nama` AS tergugat_nama,
-     tergugat.`jenis_kelamin` AS tergugat_jenis_kelamin,
-     tergugat.`tempat_tanggal_lahir` AS tergugat_tempat_tanggal_lahir,
-     tergugat.`alamat` AS tergugat_alamat,
-     tergugat.`kewarganegaraan` AS tergugat_kewarganegaraan,
-     tergugat.`agama` AS tergugat_agama,
-     tergugat.`pekerjaan` AS tergugat_pekerjaan,
-     tergugat.`pendidikan_terakhir` AS tergugat_pendidikan_terakhir,
-     tergugat.`no_hp` AS tergugat_no_hp,
-     tergugat.`email` AS tergugat_email,
-     tergugat.`status_perkawinan` AS tergugat_status_perkawinan
+     putusan.`id_putusan` AS putusan_id_putusan,
+     putusan.`id_perkara` AS putusan_id_perkara,
+     putusan.`jenis_perkara` AS putusan_jenis_perkara,
+     putusan.`tanggal_putusan` AS putusan_tanggal_putusan,
+     putusan.`jenis_putusan` AS putusan_jenis_putusan,
+     putusan.`ringkasan` AS putusan_ringkasan,
+     putusan.`salinan_file` AS putusan_salinan_file,
+     putusan.`nama_file` AS putusan_nama_file,
+     pendaftaran_perkara.`id_pendaftaran` AS pendaftaran_perkara_id_pendaftaran,
+     pendaftaran_perkara.`id_perkara` AS pendaftaran_perkara_id_perkara,
+     pendaftaran_perkara.`jenis_perkara` AS pendaftaran_perkara_jenis_perkara,
+     pendaftaran_perkara.`id_penggugat` AS pendaftaran_perkara_id_penggugat,
+     pendaftaran_perkara.`nama_penggugat` AS pendaftaran_perkara_nama_penggugat,
+     pendaftaran_perkara.`id_tergugat` AS pendaftaran_perkara_id_tergugat,
+     pendaftaran_perkara.`nama_tergugat` AS pendaftaran_perkara_nama_tergugat,
+     pendaftaran_perkara.`tanggal` AS pendaftaran_perkara_tanggal,
+     pendaftaran_perkara.`status_perkara` AS pendaftaran_perkara_status_perkara,
+     pendaftaran_perkara.`biaya` AS pendaftaran_perkara_biaya,
+     pendaftaran_perkara.`status_pembayaran` AS pendaftaran_perkara_status_pembayaran
 FROM
-     `arsip_dokumen` arsip_dokumen,
-     `hakim` hakim,
-     `pendaftaran_perkara` pendaftaran_perkara,
      `jenis_perkara` jenis_perkara,
-     `penggugat` penggugat,
-     `tergugat` tergugat]]>
+     `putusan` putusan,
+     `pendaftaran_perkara` pendaftaran_perkara]]>
 	</queryString>
-	<field name="arsip_dokumen_id_arsip" class="java.lang.Integer"/>
-	<field name="arsip_dokumen_nama_dokumen" class="java.lang.String"/>
-	<field name="arsip_dokumen_id_perkara" class="java.lang.Integer"/>
-	<field name="arsip_dokumen_id_penggugat" class="java.lang.Integer"/>
-	<field name="arsip_dokumen_id_hakim" class="java.lang.Integer"/>
-	<field name="arsip_dokumen_file_dokumen" class="java.lang.String"/>
-	<field name="arsip_dokumen_tanggal_arsip" class="java.sql.Date"/>
-	<field name="arsip_dokumen_keterangan" class="java.lang.String"/>
-	<field name="hakim_id_hakim" class="java.lang.Integer"/>
-	<field name="hakim_nama_hakim" class="java.lang.String"/>
-	<field name="hakim_nip" class="java.lang.String"/>
-	<field name="hakim_jabatan" class="java.lang.String"/>
-	<field name="hakim_tgl_mulai_tugas" class="java.sql.Date"/>
-	<field name="pendaftaran_perkara_id_perkara" class="java.lang.String"/>
-	<field name="pendaftaran_perkara_jenis_perkara" class="java.lang.String"/>
-	<field name="pendaftaran_perkara_id_penggugat" class="java.lang.String"/>
-	<field name="pendaftaran_perkara_id_tergugat" class="java.lang.String"/>
-	<field name="pendaftaran_perkara_tanggal" class="java.sql.Date"/>
-	<field name="pendaftaran_perkara_status_perkara" class="java.lang.String"/>
-	<field name="pendaftaran_perkara_biaya" class="java.lang.Integer"/>
-	<field name="pendaftaran_perkara_status_pembayaran" class="java.lang.String"/>
 	<field name="jenis_perkara_id_pk" class="java.lang.Integer"/>
 	<field name="jenis_perkara_id_perkara" class="java.lang.String"/>
 	<field name="jenis_perkara_jenis_perkara" class="java.lang.String"/>
 	<field name="jenis_perkara_tanggal" class="java.sql.Date"/>
 	<field name="jenis_perkara_keterangan" class="java.lang.String"/>
 	<field name="jenis_perkara_biaya" class="java.lang.Integer"/>
-	<field name="penggugat_id_pg" class="java.lang.Integer"/>
-	<field name="penggugat_id_penggugat" class="java.lang.String"/>
-	<field name="penggugat_nik" class="java.lang.String"/>
-	<field name="penggugat_nama" class="java.lang.String"/>
-	<field name="penggugat_jenis_kelamin" class="java.lang.String"/>
-	<field name="penggugat_tempat_tanggal_lahir" class="java.lang.String"/>
-	<field name="penggugat_alamat" class="java.lang.String"/>
-	<field name="penggugat_kewarganegaraan" class="java.lang.String"/>
-	<field name="penggugat_agama" class="java.lang.String"/>
-	<field name="penggugat_pekerjaan" class="java.lang.String"/>
-	<field name="penggugat_pendidikan_terakhir" class="java.lang.String"/>
-	<field name="penggugat_no_hp" class="java.lang.String"/>
-	<field name="penggugat_email" class="java.lang.String"/>
-	<field name="penggugat_status_perkawinan" class="java.lang.String"/>
-	<field name="tergugat_id_tg" class="java.lang.Integer"/>
-	<field name="tergugat_id_tergugat" class="java.lang.String"/>
-	<field name="tergugat_nik" class="java.lang.String"/>
-	<field name="tergugat_nama" class="java.lang.String"/>
-	<field name="tergugat_jenis_kelamin" class="java.lang.String"/>
-	<field name="tergugat_tempat_tanggal_lahir" class="java.lang.String"/>
-	<field name="tergugat_alamat" class="java.lang.String"/>
-	<field name="tergugat_kewarganegaraan" class="java.lang.String"/>
-	<field name="tergugat_agama" class="java.lang.String"/>
-	<field name="tergugat_pekerjaan" class="java.lang.String"/>
-	<field name="tergugat_pendidikan_terakhir" class="java.lang.String"/>
-	<field name="tergugat_no_hp" class="java.lang.String"/>
-	<field name="tergugat_email" class="java.lang.String"/>
-	<field name="tergugat_status_perkawinan" class="java.lang.String"/>
+	<field name="putusan_id_putusan" class="java.lang.Integer"/>
+	<field name="putusan_id_perkara" class="java.lang.String"/>
+	<field name="putusan_jenis_perkara" class="java.lang.String"/>
+	<field name="putusan_tanggal_putusan" class="java.sql.Date"/>
+	<field name="putusan_jenis_putusan" class="java.lang.String"/>
+	<field name="putusan_ringkasan" class="java.lang.String"/>
+	<field name="putusan_salinan_file" class="java.lang.Object"/>
+	<field name="putusan_nama_file" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_id_pendaftaran" class="java.lang.Integer"/>
+	<field name="pendaftaran_perkara_id_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_jenis_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_id_penggugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_nama_penggugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_id_tergugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_nama_tergugat" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_tanggal" class="java.sql.Date"/>
+	<field name="pendaftaran_perkara_status_perkara" class="java.lang.String"/>
+	<field name="pendaftaran_perkara_biaya" class="java.lang.Integer"/>
+	<field name="pendaftaran_perkara_status_pembayaran" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="79" uuid="d5325013-e5c0-40f2-9f47-f4fd45f2fcac"/>
+				<textElement textAlignment="Center">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN AKTA NIKAH]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="187" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 3" style="table 3" x="0" y="0" width="555" height="187" uuid="5fb5d179-bfe1-49a4-add5-e36980dc2445"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="365e5531-fe93-4b87-acd0-928bc03d726e">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="3c3813ea-3ac8-4917-86c1-f41556b02b25">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="db0bcb1b-31ce-4208-97e1-95b5ab8c39c8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Perkara]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="2d7d8435-d2b3-4ba1-b397-da6718dbb3bc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{pendaftaran_perkara_id_perkara}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="dee74931-740a-4fab-a94a-f73ffd43eae7">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="22eeed16-0c65-4aae-8099-ac19a18a8627"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Jenis Perkara]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="21b59938-8763-4851-a9b8-0f3e2be76239"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{pendaftaran_perkara_jenis_perkara}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="c8308ba4-529f-41b2-b136-232dc97f708c">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a7e46cd2-bcc0-44fc-bcc7-9cd40295f246"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama Penggugat]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="bfdda285-98a4-4977-99a6-e47fdd6d359d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{pendaftaran_perkara_nama_penggugat}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="d56936b1-ca5f-4e9c-98ff-3c21f194d459">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="500ae60b-e317-492f-87fd-f749db8b6e32"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nama Tergugat]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="87a8089d-4fcc-4877-85cb-f28f43f4f3f0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{pendaftaran_perkara_nama_tergugat}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="333e184b-3dc6-4e7e-b998-e3d14276fa46">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="4ccb3867-816c-450f-906c-948438b11f03"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Tanggal Putusan]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="1c7a4962-8754-4427-a788-602f5101aff1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{putusan_tanggal_putusan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="f6f31f9f-5417-45a2-b816-a9efe02ac3b7">
+						<jr:tableHeader style="table 3_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="03bb3c6f-b66f-48ef-aa94-1feefd2eaf1e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Status]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6ebd72ed-9827-4179-8b29-ba6690a99421"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{putusan_jenis_putusan}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch"/>
@@ -145,6 +335,6 @@ FROM
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="164" splitType="Stretch"/>
+		<band height="42" splitType="Stretch"/>
 	</summary>
 </jasperReport>
